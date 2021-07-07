@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#
+#  Check Request Header
+#
+while getopts ":x:p:h:" OPT; do
+	case $OPT in
+	x)
+		METHOD="-X $OPTARG"
+		;;
+	p)
+		PORT=$OPTARG
+		;;
+	h)
+		HOST=$OPTARG
+		;;
+	\?)
+		;;
+	esac
+done
+
+METHOD=${METHOD:-"-X GET"}
+PORT=${PORT:-28080}
+HOST=${HOST:-"localhost"}
+curl $METHOD -sS http://$HOST:$PORT/header | jq .
