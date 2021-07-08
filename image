@@ -1,0 +1,4 @@
+#!/bin/bash
+
+reset
+curl -XPOST localhost:28080/image -F "image=@test/sea.jpg" -v

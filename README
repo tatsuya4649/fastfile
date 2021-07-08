@@ -33,7 +33,7 @@ Image,Movie Uploading with FastAPI
 
 	Movie Upload with Curl
 	(curl -XPOST localhost:28080/header -F "@test/movie.mp4")
-	---
+	----
 	*   Trying 127.0.0.1:28080...
 	* TCP_NODELAY set
 	* Connected to localhost (127.0.0.1) port 28080 (#0)
