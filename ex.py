@@ -3,7 +3,6 @@ from fastapi import FastAPI,Request
 app = FastAPI()
 
 async def basic_header(request:Request):
-	print(request.form)
 	response = dict()
 	response["request"] = dict()
 	resreq = response["request"]
@@ -14,7 +13,8 @@ async def basic_header(request:Request):
 	for key,value in zip(request.headers.keys(),request.headers.values()):
 		resreq["headers"][key] = value
 	body = await request.body()
-	response["body"] = body
+	if body.__class__ != bytes:
+		response["body"] = body
 	form = await request.form()
 	response["form"] = form
 	response["method"] = request.method
@@ -22,6 +22,7 @@ async def basic_header(request:Request):
 	response["cookies"] = request.cookies
 	response["query_params"] = request.query_params
 	response["path_params"] = request.path_params
+	response["url"] = request.url
 	return response
 
 @app.get("/header")

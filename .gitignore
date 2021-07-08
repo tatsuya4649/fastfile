@@ -1,5 +1,3 @@
 .*.swp
-*.txt
-*.jpg
-*.png
+test
 __pycache__
