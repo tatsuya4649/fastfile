@@ -1,3 +1,59 @@
 
 Image,Movie Uploading with FastAPI
 ---
+
+	Image Upload with Curl
+	(curl -XPOST localhost:28080/header -F "@test/image.jpg")
+	----
+
+	*   Trying 127.0.0.1:28080...
+	* TCP_NODELAY set
+	* Connected to localhost (127.0.0.1) port 28080 (#0)
+	> POST /header HTTP/1.1
+	> Host: localhost:28080
+	> User-Agent: curl/7.68.0
+	> Accept: */*
+	> Content-Length: 565816
+	> Content-Type: multipart/form-data; boundary=------------------------0b43c628aa7906a6
+	> Expect: 100-continue
+	> 
+	* Mark bundle as not supporting multiuse
+	< HTTP/1.1 100 Continue
+	* We are completely uploaded and fine
+	* Mark bundle as not supporting multiuse
+	< HTTP/1.1 200 OK
+	< date: Thu, 08 Jul 2021 05:41:28 GMT
+	< server: uvicorn
+	< content-length: 1426
+	< content-type: application/json
+	< 
+	{"request":{"dir_request":["__abstractmethods__","__class__","__contains__","__delattr__","__dict__","__dir__","__doc__","__eq__","__format__","__ge__","__getattribute__","__getitem__","__gt__","__hash__","__init__","__init_subclass__","__iter__","__le__","__len__","__lt__","__module__","__ne__","__new__","__reduce__","__reduce_ex__","__repr__","__reversed__","__setattr__","__sizeof__","__slots__","__str__","__subclasshook__","__weakref__","_abc_impl","_cookies","_headers","_is_disconnected","_query_params","_receive","_send","_stream_consumed","app","auth","base_url","body","client","close","cookies","form","get","headers","is_disconnected","items","json","keys","method","path_params","query_params","receive","scope","send_push_promise","session","state","stream","url","url_for","user","values"],"headers":{"host":"localhost:28080","user-agent":"curl/7.68.0","accept":"*/*","content-length":"565816","content-type":"multipart/form-data; boundary=------------------------0b43c628aa7906a6","expect":"100-continue"}* Connection #0 to host localhost left intact
+	},"form":{"image":{"filename":"sea.jpg","content_type":"image/jpeg","file":{"_file":{},"_max_size":1048576,"_rolled":false,"_TemporaryFileArgs":{"mode":"w+b","buffering":-1,"suffix":null,"prefix":null,"encoding":null,"newline":null,"dir":null,"errors":null}}}},"method":"POST","client":["127.0.0.1",46944],"cookies":{},"query_params":{},"path_params":{},"url":{"_url":"http://localhost:28080./header"}}
+
+
+	Movie Upload with Curl
+	(curl -XPOST localhost:28080/header -F "@test/movie.mp4")
+	---
+	*   Trying 127.0.0.1:28080...
+	* TCP_NODELAY set
+	* Connected to localhost (127.0.0.1) port 28080 (#0)
+	> POST /header HTTP/1.1
+	> Host: localhost:28080
+	> User-Agent: curl/7.68.0
+	> Accept: */*
+	> Content-Length: 2280282
+	> Content-Type: multipart/form-data; boundary=------------------------1490ae859b348b1f
+	> Expect: 100-continue
+	> 
+	* Mark bundle as not supporting multiuse
+	< HTTP/1.1 100 Continue
+	* We are completely uploaded and fine
+	* Mark bundle as not supporting multiuse
+	< HTTP/1.1 200 OK
+	< date: Thu, 08 Jul 2021 05:43:57 GMT
+	< server: uvicorn
+	< content-length: 1305
+	< content-type: application/json
+	< 
+	{"request":{"dir_request":["__abstractmethods__","__class__","__contains__","__delattr__","__dict__","__dir__","__doc__","__eq__","__format__","__ge__","__getattribute__","__getitem__","__gt__","__hash__","__init__","__init_subclass__","__iter__","__le__","__len__","__lt__","__module__","__ne__","__new__","__reduce__","__reduce_ex__","__repr__","__reversed__","__setattr__","__sizeof__","__slots__","__str__","__subclasshook__","__weakref__","_abc_impl","_cookies","_headers","_is_disconnected","_query_params","_receive","_send","_stream_consumed","app","auth","base_url","body","client","close","cookies","form","get","headers","is_disconnected","items","json","keys","method","path_params","query_params","receive","scope","send_push_promise","session","state","stream","url","url_for","user","values"],"headers":{"host":"localhost:28080","user-agent":"curl/7.68.0","accept":"*/*","content-length":"2280282","content-type":"multipart/form-data; boundary=------------------------1490ae859b348b1f","expect":"100-continue"* Connection #0 to host localhost left intact
+	}},"form":{"movie":{"filename":"sea.mp4","content_type":"application/octet-stream","file":{"_file":{},"_max_size":1048576,"_rolled":true}}},"method":"POST","client":["127.0.0.1",47004],"cookies":{},"query_params":{},"path_params":{},"url":{"_url":"http://localhost:28080./header"}}
