@@ -1,0 +1,2 @@
+reset 
+curl -X POST localhost:28080/movie -F "movie=@test/sea.mp4" --trace trace_movie

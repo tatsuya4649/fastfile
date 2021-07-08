@@ -76,3 +76,37 @@ async def post_image(request: Request,image: UploadFile = File(...)):
 @app.head("/image")
 async def head_image(request:Request):
 	pass
+
+async def movie_header(request:Request):
+	response = dict()
+	response["request"] = dict()
+	resreq = response["request"]
+	resreq["dir_request"] = list()
+	for req in dir(request):
+		resreq["dir_request"].append(req)
+	resreq["headers"] = dict()
+	for key,value in zip(request.headers.keys(),request.headers.values()):
+		resreq["headers"][key] = value
+	try:
+		body = await request.body()
+		if body.__class__ != bytes:
+			response["body"] = body
+	except:
+		pass
+	form = await request.form()
+	response["form"] = form
+	response["method"] = request.method
+	response["client"] = request.client
+	response["cookies"] = request.cookies
+	response["query_params"] = request.query_params
+	response["path_params"] = request.path_params
+	response["url"] = request.url
+	return response
+
+@app.post("/movie")
+async def post_movie(request: Request,movie: UploadFile = File(...)):
+	return await image_header(request)
+
+@app.head("/movie")
+async def head_movie(request:Request):
+	pass

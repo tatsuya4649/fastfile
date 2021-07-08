@@ -1,0 +1,3 @@
+#!/bin/bash
+reset
+curl -XPOST localhost:28080/movie -F "movie=@test/sea.mp4" -v
